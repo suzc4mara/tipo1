@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="description" content="Site informativo para pacientes com diabetes mellitus tipo 1 (DM1), com dicas de autocuidado, alimentação, sinais de alerta e orientações gerais.">
+    <title>Tipo 1 | Educação em Diabetes</title>
+    <link rel="icon" type="image/svg+xml" href="logo_topo.svg">
+    <link rel="stylesheet" href="style.css?v=34">
+</head>
+<body>
+    <!-- Indicador visual do progresso de rolagem. -->
+    <div class="scroll-progress" aria-hidden="true">
+        <span class="scroll-progress__bar" id="scroll-progress-bar"></span>
+    </div>
+    <!-- Cabeçalho fixo com navegação, tema e acesso ao contato. -->
+    <header>
+        <div class="container nav">
+            <a href="#top" class="brand" aria-label="Página inicial">
+                <img class="brand-logo" src="logo_3.svg" alt="Tipo 1 — Educação em Diabetes">
+            </a>
+            <nav class="nav-links" aria-label="Navegação principal">
+                <a href="#sobre">Sobre</a>
+                <a href="#cuidados">Cuidados</a>
+                <a href="#alertas">Sinais de Alerta</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+            <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Ativar tema escuro" title="Alternar tema">
+                <span class="theme-toggle-icon" aria-hidden="true">☾</span>
+            </button>
+            <a class="button-secondary" href="#contato">Fale conosco!</a>
+        </div>
+    </header>
+
+    <main id="top">
+        <!-- Apresentação inicial e simulador educativo de glicemia. -->
+        <section class="hero">
+            <div class="container hero-grid">
+                <div>
+                    <span class="hero-kicker">Educação em diabetes <span aria-hidden="true">·</span> DM1</span>
+                    <h1>Você pode viver bem com <span class="highlight">Diabetes Mellitus Tipo 1</span>.</h1>
+                    <div class="subtitle">
+                        <p>O Diabetes Mellitus Tipo 1 (DM1) é uma condição em que o organismo deixa de produzir insulina em quantidade suficiente devido à destruição das células beta do pâncreas. Por isso, a insulina é essencial para o tratamento.</p>
+                        <details class="hero-more" open>
+                            <summary>Como é possível viver bem com DM1?</summary>
+                            <p>Com acompanhamento adequado, educação em diabetes, monitorização da glicose, alimentação equilibrada, atividade física e uso correto da insulina, é possível ter uma vida ativa e saudável.</p>
+                        </details>
+                        <p class="medical-note"><strong>Importante:</strong> As informações deste site são educativas e não substituem a avaliação e as orientações da equipe de saúde.</p>
+                    </div>
+                    <div class="hero-actions">
+                        <a class="button" href="#cuidados">Cuidados essenciais</a>
+                        <a class="button-secondary" href="#alertas">Sinais de Alerta</a>
+                    </div>
+                    <span class="hero-scroll-cue" aria-hidden="true">
+                        <span>Role para explorar</span>
+                        <svg viewBox="0 0 20 20" fill="none" focusable="false">
+                            <path d="M10 3v13m-5-5 5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </div>
+
+                <div class="hero-card">
+                    <svg class="hero-art" viewBox="0 0 520 420" fill="none" aria-hidden="true" focusable="false">
+                        <circle cx="260" cy="210" r="174" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 9"/>
+                        <circle cx="260" cy="210" r="132" stroke="currentColor" stroke-width="1.5" opacity=".55"/>
+                        <path d="M45 256h94l28-50 36 92 39-146 38 104 28-45 26 45h141" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="242" cy="152" r="7" fill="currentColor"/>
+                        <circle cx="334" cy="256" r="5" fill="currentColor" opacity=".65"/>
+                    </svg>
+                    <div class="hero-illustration" aria-label="Monitoramento da glicemia">
+                        <div class="device">
+                            <div class="device-top">
+                                <span>Sua glicemia</span>
+                                <span>📱</span>
+                            </div>
+                            <div class="device-screen">
+                                <div class="device-header">
+                                    <span>Leitura atual</span>
+                                    <span class="device-edit-hint">Toque para editar</span>
+                                </div>
+                                <label for="glicemia" class="sr-only">Informe a glicemia em miligramas por decilitro</label>
+                                <div class="device-input-row">
+                                    <input id="glicemia" class="device-input" type="number" min="0" step="1" value="118">
+                                    <span class="device-unit">mg/dL</span>
+                                </div>
+
+                                <div class="measure-options" aria-label="Quando a glicemia foi medida">
+                                    <label><input type="radio" name="medida-glicemia" value="antes" checked> Antes da refeição</label>
+                                    <label><input type="radio" name="medida-glicemia" value="depois"> Depois da refeição</label>
+                                    <label><input type="radio" name="medida-glicemia" value="acordar"> Ao acordar</label>
+                                    <label><input type="radio" name="medida-glicemia" value="antes-dormir"> Antes de dormir</label>
+                                </div>
+
+                                <div id="glicemia-status" class="result-text" aria-live="polite">Valores-alvo são individualizados. Como referência para muitos adultos com DM1, a SBD usa 70–130 mg/dL antes das refeições e menos de 180 mg/dL após as refeições.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mini-panel" data-state="adequado">
+                        <div class="mini-panel-heading">
+                            <span class="mini-panel-icon" aria-hidden="true">✦</span>
+                            <strong>Resultado educativo</strong>
+                        </div>
+                        <span id="glicemia-chip" class="chip chip-adequado">Valores variam</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cartões rápidos com sinais e orientações essenciais. -->
+        <section class="quick-actions" id="acesso-rapido">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Ações rápidas para o dia a dia</h2>
+                    <p>Se você ou alguém da sua família vive com DM1, estas são as dúvidas mais comuns na rotina.</p>
+                </div>
+
+                <div class="quick-actions-grid">
+                    <button class="flashcard quick-card quick-card--blue" type="button" aria-pressed="false" aria-label="Virar cartão sobre glicemia baixa">
+                        <span class="flashcard-inner">
+                            <span class="flashcard-face flashcard-front">
+                                <span class="quick-card__icon" aria-hidden="true">🚨</span>
+                                <span class="flashcard-title">Glicemia baixa</span>
+                                <span class="flashcard-hint">Clique para ler mais</span>
+                            </span>
+                            <span class="flashcard-face flashcard-back">
+                                <span class="quick-card__icon" aria-hidden="true">✅</span>
+                                <span class="flashcard-title">O que observar</span>
+                                <span class="flashcard-copy">Sudorese, tremor, tontura ou confusão podem indicar risco de hipoglicemia. Meça a glicemia e siga as orientações da sua equipe de saúde.</span>
+                            </span>
+                        </span>
+                    </button>
+
+                    <button class="flashcard quick-card quick-card--orange" type="button" aria-pressed="false" aria-label="Virar cartão sobre glicemia alta">
+                        <span class="flashcard-inner">
+                            <span class="flashcard-face flashcard-front">
+                                <span class="quick-card__icon" aria-hidden="true">📈</span>
+                                <span class="flashcard-title">Glicemia alta</span>
+                                <span class="flashcard-hint">Clique para ler mais</span>
+                            </span>
+                            <span class="flashcard-face flashcard-back">
+                                <span class="quick-card__icon" aria-hidden="true">💧</span>
+                                <span class="flashcard-title">Sinais que pedem atenção</span>
+                                <span class="flashcard-copy">Sede intensa, urina frequente, cansaço e visão turva podem aparecer com glicemia elevada. Registre os valores e confira com a equipe.</span>
+                            </span>
+                        </span>
+                    </button>
+
+                    <button class="flashcard quick-card quick-card--green" type="button" aria-pressed="false" aria-label="Virar cartão sobre rotina segura">
+                        <span class="flashcard-inner">
+                            <span class="flashcard-face flashcard-front">
+                                <span class="quick-card__icon" aria-hidden="true">🥗</span>
+                                <span class="flashcard-title">Rotina segura</span>
+                                <span class="flashcard-hint">Clique para ler mais</span>
+                            </span>
+                            <span class="flashcard-face flashcard-back">
+                                <span class="quick-card__icon" aria-hidden="true">🥤</span>
+                                <span class="flashcard-title">Cuidados do dia a dia</span>
+                                <span class="flashcard-copy">Alimentação equilibrada, hidratação, atividade física adequada e acompanhamento médico ajudam a manter o equilíbrio glicêmico.</span>
+                            </span>
+                        </span>
+                    </button>
+
+                    <button class="flashcard quick-card quick-card--purple" type="button" aria-pressed="false" aria-label="Virar cartão sobre apoio e acolhimento">
+                        <span class="flashcard-inner">
+                            <span class="flashcard-face flashcard-front">
+                                <span class="quick-card__icon" aria-hidden="true">🤝</span>
+                                <span class="flashcard-title">Apoio e acolhimento</span>
+                                <span class="flashcard-hint">Clique para ler mais</span>
+                            </span>
+                            <span class="flashcard-face flashcard-back">
+                                <span class="quick-card__icon" aria-hidden="true">💙</span>
+                                <span class="flashcard-title">Você não está sozinho</span>
+                                <span class="flashcard-copy">Família, amigos, equipe de saúde e uma rotina consistente fazem muita diferença no cuidado com a diabetes tipo 1.</span>
+                            </span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resumo visual de informações importantes. -->
+        <section class="stat-band">
+            <div class="container stat-grid">
+                <div class="stat-item">
+                    <strong>70–130 mg/dL</strong>
+                    <span>Faixa-alvo antes das refeições para muitos adultos com DM1</span>
+                </div>
+                <div class="stat-item">
+                    <strong>+1 passo</strong>
+                    <span>Uma rotina simples, regular e bem orientada melhora muito o controle</span>
+                </div>
+                <div class="stat-item">
+                    <strong>Educação</strong>
+                    <span>Conhecer os sinais é uma forma poderosa de cuidado e prevenção</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Explicação sobre DM1 e cartões interativos de informação. -->
+        <section id="sobre">
+            <div class="container">
+                <div class="section-header">
+                    <span class="eyebrow">01 · Entenda o diagnóstico</span>
+                    <h2>O que é o Diabetes Mellitus Tipo 1?</h2>
+                    <div class="section-copy">
+                        <p>O DM1 é uma doença geralmente relacionada a um processo autoimune que provoca a destruição das células beta do pâncreas, responsáveis pela produção de insulina.</p>
+                        <p>A falta de insulina impede que a glicose seja utilizada adequadamente pelas células e pode levar à elevação da glicemia e, quando não tratada, à cetoacidose diabética.</p>
+                    </div>
+                </div>
+
+                <div class="cards-grid">
+                    <button class="flashcard info-card info-flashcard info-flashcard--blue" type="button" aria-pressed="false" aria-label="Virar cartão: a insulina é essencial">
+                        <span class="flashcard-inner">
+                            <span class="flashcard-face flashcard-front">
+                                <span class="quick-card__icon" aria-hidden="true">💉</span>
+                                <span class="flashcard-title">A insulina é essencial</span>
+                                <span class="flashcard-hint">Clique para ler mais</span>
+                            </span>
+                            <span class="flashcard-face flashcard-back">
+                                <span class="quick-card__icon" aria-hidden="true">🩺</span>
+                                <span class="flashcard-title">Tratamento indispensável</span>
+                                <span class="flashcard-copy">Para quem tem DM1, a insulina é indispensável. Não interrompa o tratamento por conta própria: a falta de insulina pode causar descompensação metabólica e cetoacidose diabética. O tipo, a dose e os horários devem ser definidos individualmente pela equipe de saúde.</span>
+                            </span>
+                        </span>
+                    </button>
+
+                    <button class="flashcard info-card info-flashcard info-flashcard--green" type="button" aria-pressed="false" aria-label="Virar cartão: diagnóstico precoce">
+                        <span class="flashcard-inner">
+                            <span class="flashcard-face flashcard-front">
+                                <span class="quick-card__icon" aria-hidden="true">🩺</span>
+                                <span class="flashcard-title">Diagnóstico precoce</span>
+                                <span class="flashcard-hint">Clique para ler mais</span>
+                            </span>
+                            <span class="flashcard-face flashcard-back">
+                                <span class="quick-card__icon" aria-hidden="true">🔎</span>
+                                <span class="flashcard-title">Fique atento aos sinais</span>
+                                <span class="flashcard-copy">Sede intensa, urina frequente, emagrecimento, cansaço e visão embaçada podem surgir rapidamente. Procure atendimento médico o quanto antes para avaliação.</span>
+                            </span>
+                        </span>
+                    </button>
+
+                    <button class="flashcard info-card info-flashcard info-flashcard--purple" type="button" aria-pressed="false" aria-label="Virar cartão: vida com autonomia">
+                        <span class="flashcard-inner">
+                            <span class="flashcard-face flashcard-front">
+                                <span class="quick-card__icon" aria-hidden="true">🏃</span>
+                                <span class="flashcard-title">Vida com autonomia</span>
+                                <span class="flashcard-hint">Clique para ler mais</span>
+                            </span>
+                            <span class="flashcard-face flashcard-back">
+                                <span class="quick-card__icon" aria-hidden="true">💙</span>
+                                <span class="flashcard-title">Uma vida ativa é possível</span>
+                                <span class="flashcard-copy">Com educação em diabetes, acompanhamento regular e hábitos saudáveis, quem vive com DM1 pode manter uma rotina ativa e reduzir o risco de complicações.</span>
+                            </span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Três pilares que apoiam o cuidado contínuo. -->
+        <section class="pillars">
+            <div class="container">
+                <div class="section-header section-header--centered">
+                    <span class="eyebrow">Como viver melhor com DM1</span>
+                    <h2>Três pilares que fazem a diferença</h2>
+                </div>
+
+                <div class="pillar-grid">
+                    <article class="pillar-card">
+                        <div class="pillar-icon">🧠</div>
+                        <h3>Conhecimento</h3>
+                        <p>Entender o que é glicemia, insulina e sinais de alerta ajuda a agir com calma e segurança.</p>
+                    </article>
+
+                    <article class="pillar-card">
+                        <div class="pillar-icon">⏱️</div>
+                        <h3>Rotina</h3>
+                        <p>Hábitos previsíveis, checagens regulares e atenção aos horários tornam o cuidado mais eficiente.</p>
+                    </article>
+
+                    <article class="pillar-card">
+                        <div class="pillar-icon">💙</div>
+                        <h3>Apoio</h3>
+                        <p>Família, equipe de saúde e autocuidado fazem parte do tratamento e ajudam a reduzir a ansiedade.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Orientações de rotina organizadas em cartões expansíveis. -->
+        <section id="cuidados">
+            <div class="container">
+                <div class="section-header">
+                    <span class="eyebrow">02 · Cuidado contínuo</span>
+                    <h2>Rotina que protege a saúde</h2>
+                    <p>O cuidado com DM1 envolve acompanhamento médico, medicação correta e hábitos seguros no dia a dia.</p>
+                </div>
+
+                <div class="timeline">
+                    <details class="routine-card">
+                        <summary>
+                            <span class="icon" aria-hidden="true">🩸</span>
+                            <span class="routine-card__heading">
+                                <span class="routine-card__title">Monitoramento da glicemia</span>
+                                <span class="routine-card__hint">Toque para ver orientações</span>
+                            </span>
+                        </summary>
+                        <ul class="checklist">
+                            <li>Verificar os níveis de glicose conforme orientação médica.</li>
+                            <li>Registrar valores antes e depois das refeições e em momentos importantes do dia.</li>
+                            <li>Observar padrões e compartilhar com a equipe de saúde.</li>
+                        </ul>
+                    </details>
+
+                    <details class="routine-card">
+                        <summary>
+                            <span class="icon" aria-hidden="true">💊</span>
+                            <span class="routine-card__heading">
+                                <span class="routine-card__title">Uso da insulina</span>
+                                <span class="routine-card__hint">Toque para ver orientações</span>
+                            </span>
+                        </summary>
+                        <ul class="checklist">
+                            <li>Usar os tipos e horários de insulina indicados pelo médico.</li>
+                            <li>Evitar pular doses sem orientação profissional.</li>
+                            <li>Ficar atento a sintomas de hipoglicemia e hiperglicemia.</li>
+                        </ul>
+                    </details>
+
+                    <details class="routine-card">
+                        <summary>
+                            <span class="icon" aria-hidden="true">🥗</span>
+                            <span class="routine-card__heading">
+                                <span class="routine-card__title">Alimentação equilibrada</span>
+                                <span class="routine-card__hint">Toque para ver orientações</span>
+                            </span>
+                        </summary>
+                        <ul class="checklist">
+                            <li>Priorizar alimentos integrais, legumes, proteínas e carboidratos de qualidade.</li>
+                            <li>Atentar às porções para evitar picos de glicemia.</li>
+                            <li>Manter hidratação adequada ao longo do dia.</li>
+                        </ul>
+                    </details>
+
+                    <details class="routine-card">
+                        <summary>
+                            <span class="icon" aria-hidden="true">🏋️</span>
+                            <span class="routine-card__heading">
+                                <span class="routine-card__title">Atividade física</span>
+                                <span class="routine-card__hint">Toque para ver orientações</span>
+                            </span>
+                        </summary>
+                        <ul class="checklist">
+                            <li>Praticar atividade física com orientação, de acordo com a rotina.</li>
+                            <li>Monitorar a glicose antes e depois do exercício.</li>
+                            <li>Ensinar a família a reconhecer sinais de risco.</li>
+                        </ul>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sugestões práticas para manhã, dia e noite. -->
+        <section id="rotina-diaria">
+            <div class="container">
+                <div class="section-header">
+                    <span class="eyebrow">03 · Organização prática</span>
+                    <h2>Checklist para o dia a dia</h2>
+                </div>
+
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <h3>Manhã ☀️</h3>
+                        <p>Verifique a glicemia, tome a insulina conforme orientação médica e tenha um café da manhã equilibrado.</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <h3>Durante o dia 🔎</h3>
+                        <p>Observe sinais de cansaço, suor frio, tontura ou sede excessiva e ajuste a rotina conforme a sua equipe orientar.</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <h3>Noite 🌙</h3>
+                        <p>Faça o registro da glicemia, cuide do sono e mantenha a alimentação adequada para evitar oscilações.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sinais de urgência que indicam quando buscar ajuda. -->
+        <section id="alertas">
+            <div class="container">
+                <div class="section-header">
+                    <span class="eyebrow">04 · Segurança</span>
+                    <h2>Quando buscar ajuda imediata</h2>
+                </div>
+
+                <div class="alert-box">
+                    <div class="alert-heading">
+                        <span class="alert-heading-icon" aria-hidden="true">!</span>
+                        <div>
+                            <h3>Sinais de urgência</h3>
+                            <p>Procure atendimento imediato se você notar algum destes sinais.</p>
+                        </div>
+                    </div>
+                    <ul class="alert-list">
+                        <li><span class="alert-item-icon" aria-hidden="true">🧠</span><span>Confusão, sonolência excessiva ou dificuldade para falar.</span></li>
+                        <li><span class="alert-item-icon" aria-hidden="true">⚠️</span><span>Vômitos repetidos, dor forte, respiração ofegante ou desidratação.</span></li>
+                        <li><span class="alert-item-icon" aria-hidden="true">↘</span><span>Glicemia muito baixa com suor frio, tremores, tontura ou desmaio.</span></li>
+                        <li><span class="alert-item-icon" aria-hidden="true">↗</span><span>Glicemia muito alta com sede intensa, urina frequente e fraqueza.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Respostas para dúvidas comuns sobre DM1. -->
+        <section id="faq">
+            <div class="container">
+                <div class="section-header">
+                    <span class="eyebrow">05 · Informação e apoio</span>
+                    <h2>Dúvidas comuns sobre o DM1</h2>
+                </div>
+
+                <details open>
+                    <summary>O DM1 pode ser curado?</summary>
+                    <p>Hoje, o diabetes mellitus tipo 1 não tem cura. Porém, com tratamento adequado, acompanhamento e autocuidado, é possível controlar a doença e viver bem.</p>
+                </details>
+
+                <details>
+                    <summary>Posso comer carboidratos?</summary>
+                    <p>Sim. Carboidratos fazem parte da alimentação, mas é importante escolher fontes de qualidade e observar a quantidade, o horário e a relação com a insulina.</p>
+                </details>
+
+                <details>
+                    <summary>O que fazer em caso de glicemia baixa?</summary>
+                    <p>Se a glicemia estiver muito baixa, siga as orientações do seu médico ou da equipe de saúde. Em geral, é necessário consumir uma fonte rápida de carboidratos e repetir a verificação em seguida.</p>
+                </details>
+
+                <details>
+                    <summary>Preciso de acompanhamento psicológico?</summary>
+                    <p>Nem sempre, mas muitas pessoas se beneficiam do apoio emocional para lidar com a rotina, a ansiedade e os desafios do tratamento.</p>
+                </details>
+            </div>
+        </section>
+
+        <!-- Formulário de contato e endereço de e-mail da equipe. -->
+        <section id="contato">
+            <div class="container contact-wrap">
+                <div class="section-header contact-header">
+                    <span class="eyebrow">06 · Estamos aqui para ajudar</span>
+                    <h2>Fale conosco</h2>
+                    <p>Entre em contato com a nossa equipe para tirar dúvidas, compartilhar sugestões ou pedir mais informações sobre o conteúdo do site.</p>
+                </div>
+
+                <div class="contact-grid">
+                    <article class="info-card contact-card">
+                        <div class="icon" aria-hidden="true">✉️</div>
+                        <h3>E-mail</h3>
+                        <p><a href="mailto:tipo1diabetes.suporte@gmail.com">tipo1diabetes.suporte@gmail.com</a></p>
+                    </article>
+
+                    <form class="contact-form" id="contact-form">
+                        <label>
+                            Nome
+                            <input type="text" name="nome" placeholder="Seu nome" required>
+                        </label>
+                        <label>
+                            E-mail
+                            <input type="email" name="email" placeholder="seu@email.com" required>
+                        </label>
+                        <label>
+                            Mensagem
+                            <textarea name="mensagem" rows="4" placeholder="Escreva sua dúvida ou sugestão" required></textarea>
+                        </label>
+                        <button type="submit" class="button contact-submit" aria-describedby="contact-note">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                                <path d="M4 6.5h16v11H4zM4.5 7l7.5 6 7.5-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>Abrir e-mail para enviar</span>
+                        </button>
+                        <p class="form-status" id="contact-status" role="status" aria-live="polite"></p>
+                        <p class="contact-note" id="contact-note">A mensagem será preparada no seu aplicativo de e-mail. Revise e confirme o envio por lá.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chamada final para retomar o início da página. -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta">
+                    <div>
+                        <h3>Cuide bem da sua saúde e da sua rotina.</h3>
+                        <p>Você não precisa enfrentar isso sozinho. Acompanhe sua equipe, conheça seus sinais e mantenha hábitos consistentes.</p>
+                    </div>
+                    <a class="button" href="#top">Voltar ao início</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download do aplicativo Android, com aviso sobre a instalação do APK. -->
+        <section id="download-app">
+            <div class="container">
+                <div class="section-header section-header--centered">
+                    <span class="eyebrow">Aplicativo para Android</span>
+                    <h2>Instale o aplicativo Tipo 1</h2>
+                    <p>Tenha o aplicativo Tipo 1 sempre à mão. Clique no botão "Baixar APK" para instalar o aplicativo no seu dispositivo Android.</p>
+                </div>
+                <div class="app-download-card">
+                    <div class="app-download-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" focusable="false">
+                            <rect x="5" y="2.75" width="14" height="18.5" rx="3" stroke="currentColor" stroke-width="1.7"/>
+                            <path d="M10 18h4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                            <path d="M12 6.5v6m-2.5-2.5 2.5 2.5 2.5-2.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="app-download-info">
+                        <span class="app-download-label">Disponível para Android</span>
+                        <h3>Tipo 1 para Android</h3>
+                        <p>Arquivo de instalação APK</p>
+                    </div>
+                    <a class="button app-download-button" href="./app-release.apk" download="tipo1-android.apk">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                            <path d="M12 3.75v11m-4-4 4 4 4-4M5 16.75v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>Baixar APK</span>
+                    </a>
+                </div>
+                <p class="app-download-note">Durante a instalação, o Android pode pedir autorização para instalar aplicativos baixados fora da Play Store.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Navegação complementar, contato e aviso educativo. -->
+    <footer>
+        <div class="container footer-inner">
+            <div class="footer-main">
+                <span class="footer-kicker">Cuidado, informação e acolhimento</span>
+                <a href="#top" class="brand footer-brand" aria-label="Tipo 1 — voltar ao início">
+                    <img class="brand-logo" src="logo_3.svg" alt="Tipo 1 — Educação em Diabetes">
+                </a>
+                <p>Informação e apoio para uma rotina mais segura e leve com Diabetes Mellitus Tipo 1.</p>
+            </div>
+
+            <nav class="footer-nav" aria-label="Links do rodapé">
+                <strong>Explore</strong>
+                <a href="#sobre">Sobre o DM1</a>
+                <a href="#cuidados">Cuidados diários</a>
+                <a href="#alertas">Sinais de alerta</a>
+                <a href="#faq">Dúvidas comuns</a>
+                <a href="./politica-de-privacidade/">Política de Privacidade</a>
+            </nav>
+
+            <div class="footer-contact">
+                <strong>Conte com a gente</strong>
+                <p>Tem uma dúvida ou sugestão? Estamos aqui para ouvir.</p>
+                <a href="mailto:tipo1diabetes.suporte@gmail.com">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M4 6.5h16v11H4zM4.5 7l7.5 6 7.5-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Fale conosco</span>
+                </a>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <span>© <span id="year"></span> Tipo 1</span>
+            <span>Conteúdo educativo — não substitui a orientação da equipe de saúde.</span>
+            <a href="#top">Voltar ao início ↑</a>
+        </div>
+    </footer>
+
+    <button class="back-to-top" id="back-to-top" type="button" aria-label="Voltar ao início" aria-hidden="true" tabindex="-1">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 19V5m-6 6 6-6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+
+    <!-- Interações da página e atualizações dinâmicas. -->
+    <script src="script.js?v=17" defer></script>
+</body>
+</html>
