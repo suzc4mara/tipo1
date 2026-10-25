@@ -16,7 +16,7 @@ Site informativo em português sobre Diabetes Mellitus Tipo 1 (DM1), com conteú
 
 ## Aplicativo para Android
 
-O APK não está incluído neste repositório para manter os arquivos do projeto mais leves. Para baixar e instalar o aplicativo Tipo 1, acesse o [site oficial](https://tipo1diabetes.com.br/).
+O APK não é versionado neste repositório para manter os arquivos do projeto mais leves. O botão de download aponta para `app-release.apk` na raiz do site; disponibilize o arquivo nesse caminho no host para que o download funcione. O APK poderá ser baixado pelo botão da página inicial.
 
 ## Como executar localmente
 
@@ -31,24 +31,24 @@ O projeto é um site estático: não precisa instalar dependências nem compilar
 
 3. Acesse [http://localhost:8000](http://localhost:8000) no navegador.
 
-Também é possível abrir `index.html` diretamente, mas o servidor local é recomendado para testar os caminhos dos arquivos. O APK não pode ser baixado desta cópia local; use o site oficial para obtê-lo.
+Também é possível abrir `index.html` diretamente, mas o servidor local é recomendado para testar os caminhos dos arquivos. O APK não está incluído nesta cópia local.
 
 ## Publicação
 
-Publique os arquivos do projeto em um serviço de hospedagem de sites estáticos, preservando a estrutura de pastas. A página inicial é `index.html`; mantenha junto dela o CSS, o JavaScript e os arquivos SVG. A política de privacidade fica em `politica-de-privacidade/index.html`.
-
-O APK não é distribuído por este repositório. Para disponibilizar a instalação, direcione os usuários ao [site oficial](https://tipo1diabetes.com.br/).
+Publique os arquivos do projeto em um serviço de hospedagem de sites estáticos, preservando a estrutura de pastas. A página inicial é `index.html`; os estilos, o JavaScript e os SVGs ficam em `assets/`, e a política de privacidade fica em `politica-de-privacidade/index.html`. Configure o host para disponibilizar o APK em `/app-release.apk`.
 
 ## Arquivos principais
 
 | Arquivo ou pasta | Descrição |
 | --- | --- |
 | `index.html` | Página inicial e conteúdo educativo. |
-| `style.css` | Estilos, layout responsivo e temas. |
-| `script.js` | Simulador de glicemia e interações da página. |
+| `assets/css/style.css` | Estilos gerais, layout responsivo e temas. |
+| `assets/css/privacy.css` | Estilos da política de privacidade. |
+| `assets/js/script.js` | Simulador de glicemia e interações da página. |
 | `politica-de-privacidade/index.html` | Texto da política de privacidade. |
 | `politica-de-privacidade.html` | Redirecionamento para a política de privacidade. |
-| `logo_*.svg`, `logo_topo.svg` | Logotipos e ícone do site. |
+| `assets/images/` | Logotipos e ícone do site. |
+| `app-release.apk` | Arquivo opcional fornecido pelo host; não versionado neste repositório. |
 
 ## Contato
 
