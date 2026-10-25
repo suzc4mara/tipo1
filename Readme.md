@@ -14,10 +14,6 @@ Site informativo em português sobre Diabetes Mellitus Tipo 1 (DM1), com conteú
 - Política de privacidade e informações sobre o aplicativo Tipo 1 para Android.
 - Layout responsivo e recursos de acessibilidade, incluindo suporte à preferência por movimento reduzido.
 
-## Aplicativo para Android
-
-O APK não é versionado neste repositório para manter os arquivos do projeto mais leves. O botão de download aponta para `app-release.apk` na raiz do site; disponibilize o arquivo nesse caminho no host para que o download funcione. O APK poderá ser baixado pelo botão da página inicial.
-
 ## Como executar localmente
 
 O projeto é um site estático: não precisa instalar dependências nem compilar arquivos.
@@ -35,7 +31,7 @@ Também é possível abrir `index.html` diretamente, mas o servidor local é rec
 
 ## Publicação
 
-Publique os arquivos do projeto em um serviço de hospedagem de sites estáticos, preservando a estrutura de pastas. A página inicial é `index.html`; os estilos, o JavaScript e os SVGs ficam em `assets/`, e a política de privacidade fica em `politica-de-privacidade/index.html`. Configure o host para disponibilizar o APK em `/app-release.apk`.
+Publique os arquivos do projeto em um serviço de hospedagem de sites estáticos, preservando a estrutura de pastas. A página inicial é `index.html`; os estilos, o JavaScript e os SVGs ficam em `assets/`, e a política de privacidade fica em `politica-de-privacidade/index.html`.
 
 ## Arquivos principais
 
@@ -48,8 +44,7 @@ Publique os arquivos do projeto em um serviço de hospedagem de sites estáticos
 | `politica-de-privacidade/index.html` | Texto da política de privacidade. |
 | `politica-de-privacidade.html` | Redirecionamento para a política de privacidade. |
 | `assets/images/` | Logotipos e ícone do site. |
-| `app-release.apk` | Arquivo opcional fornecido pelo host; não versionado neste repositório. |
 
 ## Contato
 
-Use o formulário no site ou escreva para [tipo1diabetes.suporte@gmail.com](mailto:tipo1diabetes.suporte@gmail.com).
+Escreva para [tipo1diabetes.suporte@gmail.com](mailto:tipo1diabetes.suporte@gmail.com).
