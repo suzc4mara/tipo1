@@ -29,10 +29,6 @@ O projeto é um site estático: não precisa instalar dependências nem compilar
 
 Também é possível abrir `index.html` diretamente, mas o servidor local é recomendado para testar os caminhos dos arquivos. O APK não está incluído nesta cópia local.
 
-## Publicação
-
-Publique os arquivos do projeto em um serviço de hospedagem de sites estáticos, preservando a estrutura de pastas. A página inicial é `index.html`; os estilos, o JavaScript e os SVGs ficam em `assets/`, e a política de privacidade fica em `politica-de-privacidade/index.html`.
-
 ## Arquivos principais
 
 | Arquivo ou pasta | Descrição |
